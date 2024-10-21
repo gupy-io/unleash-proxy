@@ -1,12 +1,14 @@
 import { NextFunction, Request, Response } from 'express';
 import { createContext } from './create-context';
 import { ContextEnricher, enrichContext } from './enrich-context';
+import { Logger } from './logger';
+
 
 const POST = 'POST';
 const GET = 'GET';
 
 export const createContexMiddleware: Function =
-    (contextEnrichers: ContextEnricher[]) =>
+    (contextEnrichers: ContextEnricher[], logger?: Logger) =>
     async (req: Request, res: Response, next: NextFunction) => {
         let context;
         if (req.method === GET) {
@@ -15,6 +17,12 @@ export const createContexMiddleware: Function =
             context = req.body.context || {};
         }
         try {
+            if(!context || !context.remoteAddress) {
+                if(logger) {
+                    logger.warn('No remote address found in request');
+                    logger.warn(JSON.stringify(req));
+                }
+            }
             context.remoteAddress = context.remoteAddress || req.ip;
             res.locals.context = await enrichContext(
                 contextEnrichers,

@@ -25,7 +25,7 @@ class UnleashProxy {
         this.contextEnrichers = config.expCustomEnrichers
             ? config.expCustomEnrichers
             : [];
-        const contextMiddleware = (0, context_middleware_1.createContexMiddleware)(this.contextEnrichers);
+        const contextMiddleware = (0, context_middleware_1.createContexMiddleware)(this.contextEnrichers, this.logger);
         if (client.isReady()) {
             this.setReady();
         }
