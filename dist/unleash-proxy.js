@@ -175,6 +175,7 @@ If you don't provide the \`toggles\` property, then this operation functions exa
     }
     readyMiddleware(req, res, next) {
         if (!this.ready) {
+            this.logger.debug('Not ready to serve requests yet.');
             res.status(503).send(common_responses_1.NOT_READY_MSG);
         }
         else {
