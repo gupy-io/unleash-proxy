@@ -14,8 +14,8 @@ export const createContexMiddleware: Function =
         } else if (req.method === POST) {
             context = req.body.context || {};
         }
-        context.remoteAddress = context.remoteAddress || req.ip;
         try {
+            context.remoteAddress = context.remoteAddress || req.ip;
             res.locals.context = await enrichContext(
                 contextEnrichers,
                 createContext(context),
