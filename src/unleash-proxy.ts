@@ -289,6 +289,7 @@ If you don't provide the \`toggles\` property, then this operation functions exa
 
     private readyMiddleware(req: Request, res: Response, next: NextFunction) {
         if (!this.ready) {
+            this.logger.debug('Not ready to serve requests yet.');
             res.status(503).send(NOT_READY_MSG);
         } else {
             next();

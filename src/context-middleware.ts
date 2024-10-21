@@ -22,6 +22,11 @@ export const createContexMiddleware: Function =
                     logger.warn('No remote address found in request');
                     logger.warn(JSON.stringify(req));
                 }
+                else {
+                    console.log('No remote address found in request');
+                    console.log(JSON.stringify(req));
+                }
+
             }
             context.remoteAddress = context.remoteAddress || req.ip;
             res.locals.context = await enrichContext(
@@ -30,6 +35,10 @@ export const createContexMiddleware: Function =
             );
             next();
         } catch (err) {
+            if(logger){
+                logger.error('Failed to process the context');
+                logger.error(err);
+            }
             next(err); // or res.status(500).send("Failed to process the context");
         }
         return;
