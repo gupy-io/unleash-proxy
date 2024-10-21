@@ -1,0 +1,22 @@
+import { OpenAPIV3 } from 'openapi-types';
+export declare const format500ErrorMessage: (errorMessage: string) => string;
+export declare const NOT_READY_MSG = "The Unleash Proxy has not connected to the Unleash API and is not ready to accept requests yet.";
+export declare const notReadyResponse: OpenAPIV3.ResponseObject;
+export declare const unauthorizedResponse: OpenAPIV3.ResponseObject;
+export declare const badRequestResponse: OpenAPIV3.ResponseObject;
+export declare const emptySuccessResponse: OpenAPIV3.ResponseObject;
+export declare const unsupportedMediaTypeResponse: OpenAPIV3.ResponseObject;
+export declare const internalServerErrorResponse: OpenAPIV3.ResponseObject;
+export declare const notImplementedError: OpenAPIV3.ResponseObject;
+declare const commonResponses: {
+    readonly 200: OpenAPIV3.ResponseObject;
+    readonly 400: OpenAPIV3.ResponseObject;
+    readonly 401: OpenAPIV3.ResponseObject;
+    readonly 415: OpenAPIV3.ResponseObject;
+    readonly 500: OpenAPIV3.ResponseObject;
+    readonly 501: OpenAPIV3.ResponseObject;
+    readonly 503: OpenAPIV3.ResponseObject;
+};
+declare type CommonResponses = typeof commonResponses;
+export declare const standardResponses: (...statusCodes: (keyof CommonResponses)[]) => Partial<CommonResponses>;
+export {};

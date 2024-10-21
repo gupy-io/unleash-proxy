@@ -1,0 +1,1 @@
+{"version":3,"file":"enrich-context.js","sourceRoot":"","sources":["../src/enrich-context.ts"],"names":[],"mappings":";;;AAIA,SAAgB,aAAa,CACzB,gBAAmC,EACnC,OAAgB;IAEhB,OAAO,gBAAgB,CAAC,MAAM,CAC1B,CAAC,QAAQ,EAAE,OAAO,EAAE,EAAE,CAAC,QAAQ,CAAC,IAAI,CAAC,OAAO,CAAC,EAC7C,OAAO,CAAC,OAAO,CAAC,OAAO,CAAC,CAC3B,CAAC;AACN,CAAC;AARD,sCAQC"}

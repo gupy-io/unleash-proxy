@@ -1,0 +1,1 @@
+{"version":3,"file":"register-metrics-request.js","sourceRoot":"","sources":["../../../src/openapi/spec/register-metrics-request.ts"],"names":[],"mappings":";;;AAEa,QAAA,sBAAsB,GAAgC;IAC/D,OAAO,EAAE;QACL,kBAAkB,EAAE;YAChB,MAAM,EAAE;gBACJ,IAAI,EAAE,4CAA4C;aACrD;SACJ;KACJ;CACJ,CAAC"}

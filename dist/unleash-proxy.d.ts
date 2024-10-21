@@ -1,0 +1,35 @@
+import { Request, Response, Router } from 'express';
+import { IProxyConfig } from './config';
+import { IClient } from './client';
+import { OpenApiService } from './openapi/openapi-service';
+import { ApiRequestSchema } from './openapi/spec/api-request-schema';
+import { FeaturesSchema } from './openapi/spec/features-schema';
+import { RegisterMetricsSchema } from './openapi/spec/register-metrics-schema';
+import { LookupTogglesSchema } from './openapi/spec/lookup-toggles-schema';
+import { RegisterClientSchema } from './openapi/spec/register-client-schema';
+export default class UnleashProxy {
+    private logger;
+    private clientKeys;
+    private serverSideTokens;
+    private clientKeysHeaderName;
+    private client;
+    private contextEnrichers;
+    private ready;
+    middleware: Router;
+    private enableAllEndpoint;
+    constructor(client: IClient, config: IProxyConfig, openApiService: OpenApiService);
+    private setReady;
+    setProxySecrets(clientKeys: string[]): void;
+    setClientKeys(clientKeys: string[]): void;
+    private readyMiddleware;
+    private clientTokenMiddleware;
+    getAllToggles(req: Request, res: Response<FeaturesSchema | string>): Promise<void>;
+    getAllTogglesPOST(req: Request, res: Response<FeaturesSchema | string>): Promise<void>;
+    getEnabledToggles(req: Request, res: Response<FeaturesSchema | string>): Promise<void>;
+    lookupToggles(req: Request<any, any, LookupTogglesSchema>, res: Response<FeaturesSchema | string>): Promise<void>;
+    health(_: Request, res: Response<string>): void;
+    prometheus(_: Request, res: Response<string>): void;
+    registerMetrics(req: Request<{}, undefined, RegisterMetricsSchema>, res: Response<string>): void;
+    registerClient(req: Request<{}, undefined, RegisterClientSchema>, res: Response<string>): void;
+    unleashApi(req: Request, res: Response<string | ApiRequestSchema>): void;
+}
